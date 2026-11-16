@@ -54,3 +54,13 @@ provider payload and safe failure. Admin integration tests cover preview/referen
 binding and keeping an existing image after failure. The live admin browser journey
 creates and uploads both category and product, then verifies actual image delivery
 on the customer website. The customer repo separately tests CDN failure recovery.
+
+## Render web-service keep-alive
+
+Render web services start a ten-minute timer that requests the public
+`/health/live` endpoint with a ten-second timeout. The timer is disabled outside
+Render web services, logs non-2xx/network failures, and is cleared during shutdown.
+`tests/render-keep-alive.test.ts` covers environment gating, endpoint selection,
+failure reporting and timer cleanup. Hosted deployment verification remains pending.
+This is only a free-tier availability workaround; use a paid Render instance for
+production rather than relying on self-pings.

@@ -7727,5 +7727,21 @@
     "acceptance": "Uploaded product/category IDs bind the correct media kind and URL; media upload is audited; fresh seed contains owned public asset metadata.",
     "source": "User request: Cloudinary catalogue images/category icons and complete section asset library",
     "evidence": "tests/integration/media.test.ts; src/assets/catalogue-assets.json; docs/evidence/verify-test-e2e.log"
+  },
+  {
+    "id": "BE-RENDER-KEEPALIVE",
+    "repository": "haatgo-backend",
+    "priority": "P1",
+    "status": "in_progress",
+    "owner": "Backend engineer",
+    "title": "Keep the Render web service awake with a liveness ping",
+    "dependencies": [],
+    "requirements": [
+      "BE-011"
+    ],
+    "deliverable": "Render-web-only periodic request to /health/live with bounded timeout and shutdown cleanup",
+    "acceptance": "Local and worker processes do not ping; Render web service pings every ten minutes; failures are logged and timer is cleaned up; hosted deployment verification is recorded",
+    "source": "User request for the HaatGo Render service; Render inactivity timeout",
+    "evidence": "tests/render-keep-alive.test.ts; docs/IMPLEMENTATION_EVIDENCE.md; docs/evidence/render-keep-alive.log"
   }
 ]

@@ -3423,3 +3423,13 @@ A done task requires its stated acceptance and a linked evidence artifact. No pr
 - Deliverable: Persist catalogue media references and audit.
 - Acceptance: Uploaded product/category IDs bind the correct media kind and URL; media upload is audited; fresh seed contains owned public asset metadata..
 - Evidence: tests/integration/media.test.ts; src/assets/catalogue-assets.json; docs/evidence/verify-test-e2e.log.
+
+## BE-RENDER-KEEPALIVE — Keep the Render web service awake with a liveness ping
+
+- Status: **in_progress**; priority: **P1**; owner: Backend engineer.
+- Depends on: none.
+- Requirement(s): BE-011.
+- Source: User request for the HaatGo Render service; Render inactivity timeout.
+- Deliverable: Render-web-only periodic request to /health/live with bounded timeout and shutdown cleanup.
+- Acceptance: Local and worker processes do not ping; Render web service pings every ten minutes; failures are logged and timer is cleaned up; hosted deployment verification is recorded.
+- Evidence: tests/render-keep-alive.test.ts; docs/IMPLEMENTATION_EVIDENCE.md; docs/evidence/render-keep-alive.log.

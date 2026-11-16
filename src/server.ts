@@ -3,6 +3,7 @@ import { Server } from 'socket.io';
 import { MongoStore } from './store.js';
 import { createApp } from './app.js';
 import { config } from './config.js';
+import { startRenderKeepAlive } from './render-keep-alive.js';
 
 export async function start(uri=config.MONGODB_URI,port=config.PORT) {
   const store=await MongoStore.connect(uri);const {app,service,infrastructure}=createApp(store);const server=createServer(app);
@@ -16,8 +17,9 @@ export async function start(uri=config.MONGODB_URI,port=config.PORT) {
     await store.mutate(draft=>{const e=draft.events.find(e=>e.id===event.id);if(e)e.published=true;});
   }}catch(error){console.error('outbox processing failed',error instanceof Error?error.message:'unknown');}finally{pumping=false;}},2000);
   await new Promise<void>(resolve=>server.listen(port,'0.0.0.0',resolve));
+  const stopRenderKeepAlive = startRenderKeepAlive();
   console.log(`HaatGo API ready: http://localhost:${port} (dummy OTP ${config.DUMMY_OTP}; queue=${config.QUEUE_MODE})`);
-  const close=async()=>{clearInterval(timer);await new Promise<void>(resolve=>io.close(()=>resolve()));await infrastructure.close();await store.close();};
+  const close=async()=>{stopRenderKeepAlive?.();clearInterval(timer);await new Promise<void>(resolve=>io.close(()=>resolve()));await infrastructure.close();await store.close();};
   return {server,store,service,close};
 }
 if(process.argv[1]?.replaceAll('\\','/').match(/\/server\.(ts|js)$/)){start().then(runtime=>{for(const signal of ['SIGINT','SIGTERM'] as const)process.once(signal,()=>void runtime.close().then(()=>process.exit(0)));}).catch(error=>{console.error(error);process.exitCode=1;});}

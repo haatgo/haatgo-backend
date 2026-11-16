@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "source": "haatgo-backend/contracts (local snapshots)",
   "contractSha256": "c4ac71c63c7ce0e92306b403e2b0c1f25caee29f2de33f7c18b3192ebf73a694",
-  "backendSourceSha256": "8884cbab643989ed810ae955055fdfe26d455dc815ab45113649c220997ef38b",
+  "backendSourceSha256": "6ef7bd34bea19d889920451b9f3b55fb24b5f504e4bb2e1b98531951cfad5c5d",
   "files": {
     "contracts/api-inventory.json": "fdfbb9dce695d483cabc99b372934efcdce9ae12b008f71402acd63a377c0d21",
     "contracts/domain-contract.json": "03b8c0293feecf5cf083478246ae60e485c5617a9caec869230bd07e5a7106fe",
