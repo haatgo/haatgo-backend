@@ -4,9 +4,18 @@ import hashlib
 import json
 from pathlib import Path
 
+TEXT_SNAPSHOT_SUFFIXES = {".css", ".js", ".json", ".md", ".ts", ".tsx"}
+
 
 def digest(data):
     return hashlib.sha256(data).hexdigest()
+
+
+def snapshot_digest(path):
+    data = path.read_bytes()
+    if path.suffix.lower() in TEXT_SNAPSHOT_SUFFIXES:
+        data = data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return digest(data)
 
 
 def verify(root, release=False):
@@ -19,7 +28,7 @@ def verify(root, release=False):
         path = (root / name).resolve()
         if not path.is_relative_to(root.resolve()):
             errors.append(f"Unsafe snapshot path: {name}")
-        elif not path.is_file() or digest(path.read_bytes()) != expected:
+        elif not path.is_file() or snapshot_digest(path) != expected:
             errors.append(f"Snapshot changed or missing: {name}")
     # Scan repository source/config, without traversing dependency caches or .git.
     skipped = {".git", "node_modules", ".gradle", "build", "dist", "__pycache__"}
