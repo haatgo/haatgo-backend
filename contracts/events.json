@@ -1,0 +1,29 @@
+{
+  "version": "0.1.0",
+  "status": "draft event registry; only order.stage_changed is exemplified in TAD 05; remaining names proposed",
+  "source": "TAD_05_BACKEND section 12; PRD cross-surface synchronization requirements",
+  "envelopeFields": [
+    "eventId",
+    "aggregateType",
+    "aggregateId",
+    "seq",
+    "type",
+    "occurredAt",
+    "payload"
+  ],
+  "types": [
+    "order.stage_changed",
+    "catalogue.changed",
+    "serviceability.changed",
+    "cart.changed",
+    "partner.offer_created",
+    "partner.offer_expired",
+    "order.substitution_requested",
+    "order.substitution_decided",
+    "order.receipt_confirmed",
+    "payment.status_changed",
+    "finance.ledger_changed"
+  ],
+  "recovery": "Authorize room subscriptions; GET current state after reconnect/focus, gaps or unknown type; discard duplicate/stale sequence",
+  "privacy": "No raw OTP, token, full address or broad-room private receipt payload"
+}

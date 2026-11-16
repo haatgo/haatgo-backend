@@ -1,0 +1,177 @@
+{
+  "version": "0.1.0",
+  "status": "Local dummy-provider baseline; production business approvals and full schema acceptance pending",
+  "source": "TAD_05_BACKEND sections 4, 7, 9 and 10",
+  "enums": {
+    "OrderStatus": [
+      "placed",
+      "assignment_pending",
+      "partner_assigned",
+      "partner_accepted",
+      "traveling_to_market",
+      "shopping",
+      "shopping_review",
+      "purchased",
+      "out_for_delivery",
+      "delivered",
+      "cancelled",
+      "exception"
+    ],
+    "PaymentMethod": [
+      "COD",
+      "ONLINE"
+    ],
+    "PaymentStatus": [
+      "initiated",
+      "pending",
+      "verified",
+      "paid",
+      "failed",
+      "expired",
+      "refund_pending",
+      "partially_refunded",
+      "refunded"
+    ],
+    "CodStatus": [
+      "to_collect",
+      "collected",
+      "remittance_pending",
+      "remitted",
+      "disputed"
+    ],
+    "SettlementStatus": [
+      "estimated",
+      "earned",
+      "approved",
+      "paid",
+      "disputed"
+    ],
+    "Unit": [
+      "G",
+      "KG",
+      "ML",
+      "L",
+      "PIECE",
+      "BUNCH"
+    ]
+  },
+  "orderTransitions": [
+    [
+      "placed",
+      "assignment_pending"
+    ],
+    [
+      "placed",
+      "cancelled"
+    ],
+    [
+      "assignment_pending",
+      "partner_accepted"
+    ],
+    [
+      "assignment_pending",
+      "cancelled"
+    ],
+    [
+      "partner_assigned",
+      "partner_accepted"
+    ],
+    [
+      "partner_assigned",
+      "assignment_pending"
+    ],
+    [
+      "partner_assigned",
+      "exception"
+    ],
+    [
+      "partner_accepted",
+      "traveling_to_market"
+    ],
+    [
+      "partner_accepted",
+      "shopping"
+    ],
+    [
+      "partner_accepted",
+      "assignment_pending"
+    ],
+    [
+      "partner_accepted",
+      "exception"
+    ],
+    [
+      "traveling_to_market",
+      "shopping"
+    ],
+    [
+      "traveling_to_market",
+      "exception"
+    ],
+    [
+      "shopping",
+      "shopping_review"
+    ],
+    [
+      "shopping",
+      "purchased"
+    ],
+    [
+      "shopping",
+      "exception"
+    ],
+    [
+      "shopping_review",
+      "shopping"
+    ],
+    [
+      "shopping_review",
+      "purchased"
+    ],
+    [
+      "shopping_review",
+      "exception"
+    ],
+    [
+      "purchased",
+      "out_for_delivery"
+    ],
+    [
+      "purchased",
+      "exception"
+    ],
+    [
+      "out_for_delivery",
+      "delivered"
+    ],
+    [
+      "out_for_delivery",
+      "exception"
+    ],
+    [
+      "exception",
+      "shopping"
+    ],
+    [
+      "exception",
+      "cancelled"
+    ]
+  ],
+  "invariants": [
+    "Money is integer paise; INR; no silent increase to accepted customer charge",
+    "One market and at most one active partner per order; one active order per partner",
+    "Order state, payment state, COD and settlement states are distinct",
+    "MongoDB transaction commits domain facts plus outbox before notifications",
+    "Backend optimistic version and idempotency scope are authoritative"
+  ],
+  "ambiguitiesToResolve": [
+    "Production cancellation, empty-order delivery fee, reimbursement/funding and refund policies require operational sign-off",
+    "Payment and COD use separate state dimensions; existing clients retain enum-compatible response shapes"
+  ],
+  "localDecisions": [
+    "Partner assignment and acceptance commit atomically and expose partner_accepted",
+    "Driver compensation is snapshotted at offer/assignment",
+    "Quote binds address, cart, zone and market versions",
+    "Coupon discounts prorate when items are removed; delivery fee follows the current documented local policy"
+  ]
+}

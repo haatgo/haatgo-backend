@@ -1,0 +1,735 @@
+{
+  "version": "0.3.0",
+  "status": "local dummy handlers; production and full response-schema acceptance pending",
+  "source": "TAD_05_BACKEND.md section 5",
+  "operations": [
+    {
+      "operationId": "post_v1_auth_otp_send",
+      "method": "POST",
+      "path": "/v1/auth/otp/send",
+      "role": "Public/rate-limited",
+      "purpose": "Send login challenge",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_auth_otp_verify",
+      "method": "POST",
+      "path": "/v1/auth/otp/verify",
+      "role": "Public/rate-limited",
+      "purpose": "Verify challenge, return session",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_auth_token_refresh",
+      "method": "POST",
+      "path": "/v1/auth/token/refresh",
+      "role": "Session",
+      "purpose": "Rotate refresh token",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_auth_logout",
+      "method": "POST",
+      "path": "/v1/auth/logout",
+      "role": "Session",
+      "purpose": "Revoke/clear tokens",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_me",
+      "method": "GET",
+      "path": "/v1/me",
+      "role": "Customer/partner",
+      "purpose": "Current user/partner",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_devices",
+      "method": "POST",
+      "path": "/v1/devices",
+      "role": "Auth",
+      "purpose": "Register/rotate FCM token",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "delete_v1_devices_deviceId",
+      "method": "DELETE",
+      "path": "/v1/devices/:deviceId",
+      "role": "Auth",
+      "purpose": "Revoke push target",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_admin_auth_login",
+      "method": "POST",
+      "path": "/v1/admin/auth/login",
+      "role": "Admin",
+      "purpose": "Admin identity login",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_admin_auth_logout",
+      "method": "POST",
+      "path": "/v1/admin/auth/logout",
+      "role": "Admin",
+      "purpose": "Revoke admin session",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_geo_serviceability",
+      "method": "GET",
+      "path": "/v1/geo/serviceability",
+      "role": "Public",
+      "purpose": "Zone/market eligibility",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_catalog_home",
+      "method": "GET",
+      "path": "/v1/catalog/home",
+      "role": "Public",
+      "purpose": "Home categories/shelves",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_categories",
+      "method": "GET",
+      "path": "/v1/categories",
+      "role": "Public",
+      "purpose": "Active category list",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_products",
+      "method": "GET",
+      "path": "/v1/products",
+      "role": "Public",
+      "purpose": "Products with server price",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_products_search",
+      "method": "GET",
+      "path": "/v1/products/search",
+      "role": "Public",
+      "purpose": "Product search",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_products_id",
+      "method": "GET",
+      "path": "/v1/products/:id",
+      "role": "Public",
+      "purpose": "Product detail",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_addresses",
+      "method": "GET",
+      "path": "/v1/addresses",
+      "role": "Customer",
+      "purpose": "Saved addresses",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_addresses",
+      "method": "POST",
+      "path": "/v1/addresses",
+      "role": "Customer",
+      "purpose": "Add address",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "patch_v1_addresses_id",
+      "method": "PATCH",
+      "path": "/v1/addresses/:id",
+      "role": "Customer owner",
+      "purpose": "Edit address",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "delete_v1_addresses_id",
+      "method": "DELETE",
+      "path": "/v1/addresses/:id",
+      "role": "Customer owner",
+      "purpose": "Soft-delete address",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_cart",
+      "method": "GET",
+      "path": "/v1/cart",
+      "role": "Customer",
+      "purpose": "Current cart",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "put_v1_cart",
+      "method": "PUT",
+      "path": "/v1/cart",
+      "role": "Customer",
+      "purpose": "Replace/sync draft with expected revision",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_checkout_quote",
+      "method": "POST",
+      "path": "/v1/checkout/quote",
+      "role": "Customer",
+      "purpose": "Validated price/zone/fee snapshot",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_orders",
+      "method": "POST",
+      "path": "/v1/orders",
+      "role": "Customer",
+      "purpose": "Create from valid quote; idempotent",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_orders",
+      "method": "GET",
+      "path": "/v1/orders",
+      "role": "Customer",
+      "purpose": "Own order list",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_orders_publicOrderId",
+      "method": "GET",
+      "path": "/v1/orders/:publicOrderId",
+      "role": "Customer owner",
+      "purpose": "Current order detail and event version",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_orders_id_cancel",
+      "method": "POST",
+      "path": "/v1/orders/:id/cancel",
+      "role": "Customer owner",
+      "purpose": "Policy-driven cancellation",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_orders_id_substitutions",
+      "method": "GET",
+      "path": "/v1/orders/:id/substitutions",
+      "role": "Customer owner",
+      "purpose": "Pending/decided substitutions",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_orders_id_substitutions_requestId_decision",
+      "method": "POST",
+      "path": "/v1/orders/:id/substitutions/:requestId/decision",
+      "role": "Customer owner",
+      "purpose": "Approve/reject with order version",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_payments_gateway_order",
+      "method": "POST",
+      "path": "/v1/payments/gateway-order",
+      "role": "Customer owner",
+      "purpose": "Create payment intent for eligible order",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_payments_paymentId_status",
+      "method": "GET",
+      "path": "/v1/payments/:paymentId/status",
+      "role": "Customer owner",
+      "purpose": "Authoritative payment state",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_payments_verify_callback",
+      "method": "POST",
+      "path": "/v1/payments/verify-callback",
+      "role": "Customer owner",
+      "purpose": "Verify payment return safely",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_webhooks_payment",
+      "method": "POST",
+      "path": "/v1/webhooks/payment",
+      "role": "Gateway signed",
+      "purpose": "Raw-body signed event, dedup",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_support_tickets",
+      "method": "GET",
+      "path": "/v1/support/tickets",
+      "role": "Customer owner",
+      "purpose": "Own tickets",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_support_tickets",
+      "method": "POST",
+      "path": "/v1/support/tickets",
+      "role": "Customer owner",
+      "purpose": "Support issue",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_partner_me",
+      "method": "GET",
+      "path": "/v1/partner/me",
+      "role": "Approved/registered partner",
+      "purpose": "Approval and capability",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "put_v1_partner_availability",
+      "method": "PUT",
+      "path": "/v1/partner/availability",
+      "role": "Approved partner",
+      "purpose": "Request online/offline",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_partner_heartbeat",
+      "method": "POST",
+      "path": "/v1/partner/heartbeat",
+      "role": "Available/active partner",
+      "purpose": "Current location and health",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_partner_offers_current",
+      "method": "GET",
+      "path": "/v1/partner/offers/current",
+      "role": "Partner",
+      "purpose": "Current live offer",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_partner_offers_id_accept",
+      "method": "POST",
+      "path": "/v1/partner/offers/:id/accept",
+      "role": "Partner",
+      "purpose": "Atomic valid acceptance",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_partner_offers_id_decline",
+      "method": "POST",
+      "path": "/v1/partner/offers/:id/decline",
+      "role": "Partner",
+      "purpose": "Decline one offer",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_partner_assignments_active",
+      "method": "GET",
+      "path": "/v1/partner/assignments/active",
+      "role": "Partner",
+      "purpose": "Current task snapshot",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_partner_orders_id_arrive_market",
+      "method": "POST",
+      "path": "/v1/partner/orders/:id/arrive-market",
+      "role": "Assigned partner",
+      "purpose": "Record arrival",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "patch_v1_partner_orders_id_shopping_items_lineId",
+      "method": "PATCH",
+      "path": "/v1/partner/orders/:id/shopping-items/:lineId",
+      "role": "Assigned partner",
+      "purpose": "Bought/missing draft",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_partner_orders_id_substitutions",
+      "method": "POST",
+      "path": "/v1/partner/orders/:id/substitutions",
+      "role": "Assigned partner",
+      "purpose": "Propose substitute",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_partner_orders_id_receipt_upload_intent",
+      "method": "POST",
+      "path": "/v1/partner/orders/:id/receipt/upload-intent",
+      "role": "Assigned partner",
+      "purpose": "Get signed upload",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_partner_orders_id_receipt_confirm",
+      "method": "POST",
+      "path": "/v1/partner/orders/:id/receipt/confirm",
+      "role": "Assigned partner",
+      "purpose": "Attach proof and actual cost",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_partner_orders_id_shopping_complete",
+      "method": "POST",
+      "path": "/v1/partner/orders/:id/shopping/complete",
+      "role": "Assigned partner",
+      "purpose": "Finalize shopping step",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_partner_orders_id_out_for_delivery",
+      "method": "POST",
+      "path": "/v1/partner/orders/:id/out-for-delivery",
+      "role": "Assigned partner",
+      "purpose": "Begin delivery",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_partner_orders_id_delivery_verify",
+      "method": "POST",
+      "path": "/v1/partner/orders/:id/delivery/verify",
+      "role": "Assigned partner",
+      "purpose": "Server OTP verification",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_partner_orders_id_incident",
+      "method": "POST",
+      "path": "/v1/partner/orders/:id/incident",
+      "role": "Assigned partner",
+      "purpose": "Exception/unreachable",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_partner_earnings",
+      "method": "GET",
+      "path": "/v1/partner/earnings",
+      "role": "Partner",
+      "purpose": "Payout and reimbursement view",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_admin_overview",
+      "method": "GET",
+      "path": "/v1/admin/overview",
+      "role": "Permitted admin",
+      "purpose": "KPI summary",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_admin_orders",
+      "method": "GET",
+      "path": "/v1/admin/orders",
+      "role": "Ops/support",
+      "purpose": "Filter/paginate orders",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_admin_orders_id",
+      "method": "GET",
+      "path": "/v1/admin/orders/:id",
+      "role": "Permitted admin",
+      "purpose": "Details/events/receipt",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_admin_orders_id_assign",
+      "method": "POST",
+      "path": "/v1/admin/orders/:id/assign",
+      "role": "Dispatcher",
+      "purpose": "Manual partner assignment",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_admin_orders_id_reassign",
+      "method": "POST",
+      "path": "/v1/admin/orders/:id/reassign",
+      "role": "Dispatcher",
+      "purpose": "Override with reason/version",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_admin_orders_id_resolve_exception",
+      "method": "POST",
+      "path": "/v1/admin/orders/:id/resolve-exception",
+      "role": "Ops/support",
+      "purpose": "Exception resolution",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_admin_products",
+      "method": "GET",
+      "path": "/v1/admin/products",
+      "role": "Catalogue",
+      "purpose": "List/create",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_admin_products",
+      "method": "POST",
+      "path": "/v1/admin/products",
+      "role": "Catalogue",
+      "purpose": "List/create",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "patch_v1_admin_products_id",
+      "method": "PATCH",
+      "path": "/v1/admin/products/:id",
+      "role": "Catalogue",
+      "purpose": "Versioned edit/archive",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_admin_categories",
+      "method": "GET",
+      "path": "/v1/admin/categories",
+      "role": "Catalogue",
+      "purpose": "List/create",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_admin_categories",
+      "method": "POST",
+      "path": "/v1/admin/categories",
+      "role": "Catalogue",
+      "purpose": "List/create",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_admin_markets",
+      "method": "GET",
+      "path": "/v1/admin/markets",
+      "role": "Ops",
+      "purpose": "List/create",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_admin_markets",
+      "method": "POST",
+      "path": "/v1/admin/markets",
+      "role": "Ops",
+      "purpose": "List/create",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "patch_v1_admin_markets_id",
+      "method": "PATCH",
+      "path": "/v1/admin/markets/:id",
+      "role": "Ops",
+      "purpose": "Update market status",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_admin_zones",
+      "method": "GET",
+      "path": "/v1/admin/zones",
+      "role": "Ops",
+      "purpose": "Service zones and fee rules",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_admin_zones",
+      "method": "POST",
+      "path": "/v1/admin/zones",
+      "role": "Ops",
+      "purpose": "Service zones and fee rules",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_admin_partners",
+      "method": "GET",
+      "path": "/v1/admin/partners",
+      "role": "Ops",
+      "purpose": "Partner roster",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_admin_partners_id_approve",
+      "method": "POST",
+      "path": "/v1/admin/partners/:id/approve",
+      "role": "Ops",
+      "purpose": "Approve",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_admin_partners_id_suspend",
+      "method": "POST",
+      "path": "/v1/admin/partners/:id/suspend",
+      "role": "Ops",
+      "purpose": "Suspend with reason",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_admin_support_tickets",
+      "method": "GET",
+      "path": "/v1/admin/support/tickets",
+      "role": "Support",
+      "purpose": "Ticket queue",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "patch_v1_admin_support_tickets_id",
+      "method": "PATCH",
+      "path": "/v1/admin/support/tickets/:id",
+      "role": "Support",
+      "purpose": "Update ticket",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_admin_finance_payments",
+      "method": "GET",
+      "path": "/v1/admin/finance/payments",
+      "role": "Finance",
+      "purpose": "Payment collection ledger",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_admin_finance_reconciliation",
+      "method": "GET",
+      "path": "/v1/admin/finance/reconciliation",
+      "role": "Finance",
+      "purpose": "Purchase/COD/payout entries",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_admin_finance_refunds",
+      "method": "POST",
+      "path": "/v1/admin/finance/refunds",
+      "role": "Finance",
+      "purpose": "Initiate idempotent refund",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_admin_audit",
+      "method": "GET",
+      "path": "/v1/admin/audit",
+      "role": "Super-admin",
+      "purpose": "Sensitive change log",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_admin_reports_orders",
+      "method": "GET",
+      "path": "/v1/admin/reports/orders",
+      "role": "Permitted admin",
+      "purpose": "Paginated/export job",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_config",
+      "method": "GET",
+      "path": "/v1/config",
+      "role": "Public",
+      "purpose": "Local provider and payment capabilities",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "patch_v1_me",
+      "method": "PATCH",
+      "path": "/v1/me",
+      "role": "Customer/partner/admin",
+      "purpose": "Update own display name",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_orders_id_events",
+      "method": "GET",
+      "path": "/v1/orders/:id/events",
+      "role": "Order owner/assigned partner/admin",
+      "purpose": "Authorized sequence recovery events",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "put_v1_uploads_id",
+      "method": "PUT",
+      "path": "/v1/uploads/:id",
+      "role": "Assigned partner",
+      "purpose": "Upload private PNG/JPEG proof",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_receipts_id",
+      "method": "GET",
+      "path": "/v1/receipts/:id",
+      "role": "Assigned partner/permitted admin",
+      "purpose": "Read authorized private receipt",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_admin_customers",
+      "method": "GET",
+      "path": "/v1/admin/customers",
+      "role": "Support",
+      "purpose": "Masked customer directory",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_partner_orders",
+      "method": "GET",
+      "path": "/v1/partner/orders",
+      "role": "Partner",
+      "purpose": "Assigned order history",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "patch_v1_admin_finance_entries_id",
+      "method": "PATCH",
+      "path": "/v1/admin/finance/entries/:id",
+      "role": "Finance",
+      "purpose": "Audited idempotent settlement transition",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_promotions",
+      "method": "GET",
+      "path": "/v1/promotions",
+      "role": "Public",
+      "purpose": "Current promotion terms",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "get_v1_admin_promotions",
+      "method": "GET",
+      "path": "/v1/admin/promotions",
+      "role": "Catalogue",
+      "purpose": "Promotion inventory",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_admin_promotions",
+      "method": "POST",
+      "path": "/v1/admin/promotions",
+      "role": "Catalogue",
+      "purpose": "Create bounded promotion",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "patch_v1_admin_promotions_id",
+      "method": "PATCH",
+      "path": "/v1/admin/promotions/:id",
+      "role": "Catalogue",
+      "purpose": "Versioned promotion edit",
+      "status": "implemented-local-dummy"
+    },
+    {
+      "operationId": "post_v1_admin_media_images",
+      "method": "POST",
+      "path": "/v1/admin/media/images",
+      "role": "Catalogue",
+      "purpose": "Upload a public catalogue image into the dedicated HaatGo Cloudinary folder",
+      "status": "implemented-cloudinary"
+    },
+    {
+      "operationId": "get_v1_admin_media_images",
+      "method": "GET",
+      "path": "/v1/admin/media/images",
+      "role": "Catalogue",
+      "purpose": "List uploaded public catalogue images",
+      "status": "implemented-cloudinary"
+    }
+  ]
+}

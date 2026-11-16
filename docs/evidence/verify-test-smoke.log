@@ -1,0 +1,11 @@
+
+> haatgo-backend@0.1.0 test:smoke
+> tsx scripts/smoke.ts
+
+PASS /health/live
+PASS /health/ready
+PASS /v1/config
+PASS /v1/catalog/home
+PASS /v1/products/search?q=alu
+PASS /v1/geo/serviceability?pincode=700150
+PASS admin API requires login

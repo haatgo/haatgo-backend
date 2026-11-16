@@ -1,0 +1,10 @@
+import { Queue, Worker } from 'bullmq';
+import { MongoStore } from '../src/store.js';
+import { Service } from '../src/service.js';
+import { config } from '../src/config.js';
+const url=new URL(config.REDIS_URL);const connection={host:url.hostname,port:Number(url.port)||6379,password:url.password||undefined,maxRetriesPerRequest:null};
+const store=await MongoStore.connect(config.MONGODB_URI),service=new Service(store);
+const queue=new Queue('haatgo-maintenance',{connection,prefix:config.REDIS_NAMESPACE});
+await queue.upsertJobScheduler('domain-recovery',{every:2000},{name:'sweep',data:{},opts:{attempts:5,backoff:{type:'exponential',delay:1000},removeOnComplete:100,removeOnFail:1000}});
+const worker=new Worker('haatgo-maintenance',()=>service.sweep(),{connection,prefix:config.REDIS_NAMESPACE,concurrency:1});worker.on('failed',(_job,error)=>console.error('maintenance failed',error.message));
+for(const signal of ['SIGINT','SIGTERM'] as const)process.once(signal,()=>void worker.close().then(()=>queue.close()).then(()=>store.close()));

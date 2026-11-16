@@ -1,0 +1,50 @@
+{
+  "name": "haatgo-backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "dev:local": "tsx scripts/local.ts",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "start": "node dist/src/server.js",
+    "test": "vitest run",
+    "test:integration": "vitest run tests/integration",
+    "test:smoke": "tsx scripts/smoke.ts",
+    "test:e2e": "vitest run tests/e2e",
+    "db:backup": "tsx scripts/backup.ts",
+    "db:restore": "tsx scripts/restore.ts",
+    "contracts:generate": "tsx scripts/contracts.ts",
+    "worker": "tsx worker/index.ts",
+    "assets:prepare": "tsx scripts/prepare-assets.ts"
+  },
+  "dependencies": {
+    "bullmq": "6.7.6",
+    "cookie-parser": "1.4.7",
+    "cors": "2.8.6",
+    "dotenv": "18.0.10",
+    "express": "5.3.0",
+    "helmet": "8.3.0",
+    "ioredis": "6.0.0",
+    "mongodb": "7.9.0",
+    "sharp": "0.35.5",
+    "socket.io": "4.8.4",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "1.4.10",
+    "@types/cors": "2.8.19",
+    "@types/express": "5.0.6",
+    "@types/node": "26.6.6",
+    "@types/supertest": "7.2.1",
+    "mongodb-memory-server": "11.3.0",
+    "supertest": "7.3.2",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vitest": "5.1.0"
+  }
+}

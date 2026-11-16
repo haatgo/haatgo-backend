@@ -1,0 +1,66 @@
+:root {
+  --hg-brand-green: #168b56;
+  --hg-brand-green-dark: #075b3b;
+  --hg-brand-saffron: #f6a21b;
+  --hg-brand-saffron-soft: #fff0d6;
+  --hg-action-primary: #0e7547;
+  --hg-action-primary-hover: #0b633c;
+
+  --hg-bg-canvas: #fff9f1;
+  --hg-bg-surface: #ffffff;
+  --hg-bg-subtle: #f3f7ee;
+  --hg-text-primary: #1c312c;
+  --hg-text-secondary: #65736e;
+  --hg-border: #dfe7de;
+
+  --hg-state-success: #0e7547;
+  --hg-state-warning: #9b5600;
+  --hg-state-error: #b93735;
+  --hg-state-info: #2168bc;
+
+  --hg-space-1: 4px;
+  --hg-space-2: 8px;
+  --hg-space-3: 12px;
+  --hg-space-4: 16px;
+  --hg-space-5: 20px;
+  --hg-space-6: 24px;
+  --hg-space-8: 32px;
+  --hg-space-10: 40px;
+  --hg-space-12: 48px;
+
+  --hg-radius-sm: 8px;
+  --hg-radius-md: 12px;
+  --hg-radius-lg: 18px;
+  --hg-radius-xl: 24px;
+  --hg-radius-pill: 999px;
+
+  --hg-font-family: Inter, "Noto Sans Bengali", "Noto Sans Devanagari", sans-serif;
+  --hg-shadow-card: 0 2px 12px rgb(28 49 44 / 7%);
+  --hg-content-max: 1280px;
+}
+
+.hg-button-primary {
+  min-height: 48px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: var(--hg-radius-md);
+  background: var(--hg-action-primary);
+  color: #fff;
+  font-family: var(--hg-font-family);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hg-button-primary:hover {
+  background: var(--hg-action-primary-hover);
+}
+
+.hg-button-primary:focus-visible {
+  outline: 3px solid var(--hg-brand-saffron);
+  outline-offset: 3px;
+}
+
+.hg-button-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}

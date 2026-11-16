@@ -1,0 +1,10 @@
+import 'dotenv/config';
+import { z } from 'zod';
+const env = z.object({ NODE_ENV:z.enum(['development','test','production']).default('development'), PORT:z.coerce.number().int().default(4000), MONGODB_URI:z.string().default('mongodb://127.0.0.1:27017/haatgo_local?replicaSet=rs0'), REDIS_URL:z.url().default('redis://127.0.0.1:6379'), REDIS_NAMESPACE:z.string().regex(/^[a-zA-Z0-9:_-]{1,80}$/).default('haatgo:local'), QUEUE_MODE:z.enum(['dummy','redis']).default('dummy'), DUMMY_PROVIDERS:z.enum(['true','false']).default('true'), MEDIA_PROVIDER:z.enum(['disabled','cloudinary']).default('disabled'), CLOUDINARY_CLOUD_NAME:z.string().regex(/^[a-zA-Z0-9_-]*$/).default(''), CLOUDINARY_UPLOAD_PRESET:z.string().default(''), CLOUDINARY_ASSET_ROOT:z.string().regex(/^[a-zA-Z0-9_-]+$/).default('haatgo'), DUMMY_OTP:z.string().regex(/^\d{6}$/).default('123456'), DUMMY_DELIVERY_OTP:z.string().regex(/^\d{6}$/).default('654321'), ADMIN_EMAIL:z.string().email().default('admin@haatgo.local'), ADMIN_PASSWORD:z.string().min(12).default('HaatGo-demo-2026!'), SESSION_SECRET:z.string().min(32).default('local-development-only-change-before-any-deployment'), CUSTOMER_WEB_ORIGIN:z.string().url().default('http://localhost:5173'), ADMIN_WEB_ORIGIN:z.string().url().default('http://localhost:5174'), ONLINE_PAYMENTS_ENABLED:z.enum(['true','false']).default('true') }).parse(process.env);
+if(env.DUMMY_PROVIDERS!=='true')throw new Error('Live provider adapters are not configured; dummy mode is required for local development');
+if (env.NODE_ENV === 'production') {
+  if (env.DUMMY_PROVIDERS === 'true' || env.QUEUE_MODE !== 'redis' || env.SESSION_SECRET.includes('development') || env.ADMIN_PASSWORD.includes('demo')) throw new Error('Production refuses dummy providers, demo credentials, or local queue mode');
+  // Live SMS/payment/storage adapters must be explicitly implemented before production enablement.
+  throw new Error('Production deployment is disabled until live provider adapters and operational approvals are configured');
+}
+export const config = env;

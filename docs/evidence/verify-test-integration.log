@@ -1,0 +1,16 @@
+
+> haatgo-backend@0.1.0 test:integration
+> vitest run tests/integration
+
+
+ RUN  v5.1.0 C:/Users/deysa/OneDrive/Desktop/HaatGo_Complete_Documentation/03_Projects/haatgo-backend
+
+
+ Test Files  14 passed (14)
+      Tests  37 passed (37)
+   Start at  13:36:41
+   Duration  23.97s (import 76%, tests 18%, transform 6%, worker 1%)
+
+    Isolate  14 workers spawned · ~233ms startup each (spawn + environment, per file)
+             at least ~3.03s faster with isolate: false — reuses workers across files instead of one per file
+

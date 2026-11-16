@@ -1,0 +1,3 @@
+PASS unchanged source content and documentation updates keep the API process running
+PASS real source-byte changes restart the API
+PASS original source restored and Mongo-backed readiness recovered

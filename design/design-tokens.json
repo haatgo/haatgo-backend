@@ -1,0 +1,76 @@
+{
+  "name": "HaatGo visual concept tokens",
+  "version": "1.0.0",
+  "colors": {
+    "brand": {
+      "green": "#168B56",
+      "greenDark": "#075B3B",
+      "saffron": "#F6A21B",
+      "saffronSoft": "#FFF0D6"
+    },
+    "action": {
+      "primary": "#0E7547",
+      "primaryHover": "#0B633C"
+    },
+    "background": {
+      "canvas": "#FFF9F1",
+      "surface": "#FFFFFF",
+      "subtle": "#F3F7EE"
+    },
+    "text": {
+      "primary": "#1C312C",
+      "secondary": "#65736E"
+    },
+    "border": {
+      "default": "#DFE7DE"
+    },
+    "state": {
+      "success": "#0E7547",
+      "warning": "#9B5600",
+      "error": "#B93735",
+      "info": "#2168BC"
+    }
+  },
+  "spacingPx": {
+    "1": 4,
+    "2": 8,
+    "3": 12,
+    "4": 16,
+    "5": 20,
+    "6": 24,
+    "8": 32,
+    "10": 40,
+    "12": 48
+  },
+  "radiusPx": {
+    "sm": 8,
+    "md": 12,
+    "lg": 18,
+    "xl": 24,
+    "pill": 999
+  },
+  "typography": {
+    "fontFamily": "Inter, Noto Sans Bengali, Noto Sans Devanagari, sans-serif",
+    "weights": [400, 500, 600, 700],
+    "sizesPx": {
+      "caption": 12,
+      "label": 13,
+      "bodySmall": 14,
+      "body": 16,
+      "heading3": 18,
+      "heading2": 24,
+      "heading1": 32,
+      "display": 40
+    }
+  },
+  "mobile": {
+    "referenceWidthDp": 390,
+    "minimumTapTargetDp": 48,
+    "primaryButtonHeightDp": 52
+  },
+  "web": {
+    "maxContentWidthPx": 1280,
+    "breakpointsPx": [600, 900, 1280],
+    "adminSidebarWidthPx": 232
+  }
+}
