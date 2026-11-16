@@ -61,6 +61,8 @@ Render web services start a ten-minute timer that requests the public
 `/health/live` endpoint with a ten-second timeout. The timer is disabled outside
 Render web services, logs non-2xx/network failures, and is cleared during shutdown.
 `tests/render-keep-alive.test.ts` covers environment gating, endpoint selection,
-failure reporting and timer cleanup. Hosted deployment verification remains pending.
+failure reporting and timer cleanup. After commit `00c5f29` was pushed, a public
+GET to `https://haatgo-backend.onrender.com/health/live` returned `status: live`
+at 2026-11-16T18:29:44.537Z.
 This is only a free-tier availability workaround; use a paid Render instance for
 production rather than relying on self-pings.

@@ -7732,7 +7732,7 @@
     "id": "BE-RENDER-KEEPALIVE",
     "repository": "haatgo-backend",
     "priority": "P1",
-    "status": "in_progress",
+    "status": "done",
     "owner": "Backend engineer",
     "title": "Keep the Render web service awake with a liveness ping",
     "dependencies": [],

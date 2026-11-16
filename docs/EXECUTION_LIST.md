@@ -3426,7 +3426,7 @@ A done task requires its stated acceptance and a linked evidence artifact. No pr
 
 ## BE-RENDER-KEEPALIVE — Keep the Render web service awake with a liveness ping
 
-- Status: **in_progress**; priority: **P1**; owner: Backend engineer.
+- Status: **done**; priority: **P1**; owner: Backend engineer.
 - Depends on: none.
 - Requirement(s): BE-011.
 - Source: User request for the HaatGo Render service; Render inactivity timeout.
